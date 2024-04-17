@@ -1,21 +1,24 @@
 package com.restaurantdelivery.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
 @Entity
-@Table(name = "dish")
-public class Dish {
+@Table(name = "feeedback")
+public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String name;
+    private int rate;
 
-    private String description;
+    @Column
+    private String comment;
 }
