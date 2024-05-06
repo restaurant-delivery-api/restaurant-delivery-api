@@ -1,7 +1,11 @@
 package com.restaurantdelivery.controller;
 
+import com.restaurantdelivery.dto.CategoryDto;
 import com.restaurantdelivery.dto.MenuDto;
+import com.restaurantdelivery.dto.ProductDto;
+import com.restaurantdelivery.entity.Category;
 import com.restaurantdelivery.entity.Menu;
+import com.restaurantdelivery.entity.Product;
 import com.restaurantdelivery.exception.ServerException;
 import com.restaurantdelivery.service.MenuService;
 import lombok.AllArgsConstructor;
@@ -27,10 +31,18 @@ public class MenuController {
         return menuService.getAllMenus().stream().map(this::convertToDto).toList();
     }
 
+    // get menu and all its inners
     @GetMapping("/{id}")
     @ResponseBody
     public MenuDto getMenu(@PathVariable("id") Long id) {
         return convertToDto(menuService.getMenuById(id));
+    }
+
+    // get category and its products
+    @GetMapping("/{menu_id}/{category_id}")
+    @ResponseBody
+    public CategoryDto getCategory(@PathVariable("menu_id") Long menuId, @PathVariable("category_id") Long categoryId) {
+        return convertToDto(menuService.getCategoryFromMenuByIds(menuId, categoryId));
     }
 
     @PostMapping
@@ -38,6 +50,22 @@ public class MenuController {
     @ResponseBody
     public MenuDto addMenu(@RequestBody MenuDto menuDto) {
         return convertToDto(menuService.addMenu(convertToEntity(menuDto)));
+    }
+
+    @PostMapping("/{menu_id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public CategoryDto addCategoryToMenu(@PathVariable("menu_id") Long menuId, @RequestBody CategoryDto categoryDto) {
+        return convertToDto(menuService.addCategoryToMenu(menuId, convertToEntity(categoryDto)));
+    }
+
+    @PostMapping("/{menu_id}/{category_id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public ProductDto addProductToCategory(@PathVariable("menu_id") Long menuId,
+                                           @PathVariable("category_id") Long categoryId,
+                                           @RequestBody ProductDto productDto) {
+        return convertToDto(menuService.addProductToCategory(menuId, categoryId, convertToEntity(productDto)));
     }
 
     @PutMapping("/{id}")
@@ -62,7 +90,23 @@ public class MenuController {
         return menuMapper.map(menu, MenuDto.class);
     }
 
+    private CategoryDto convertToDto(Category category) {
+        return menuMapper.map(category, CategoryDto.class);
+    }
+
+    private ProductDto convertToDto(Product product) {
+        return menuMapper.map(product, ProductDto.class);
+    }
+
     private Menu convertToEntity(MenuDto menuDto) {
         return menuMapper.map(menuDto, Menu.class);
+    }
+
+    private Category convertToEntity(CategoryDto categoryDto) {
+        return menuMapper.map(categoryDto, Category.class);
+    }
+
+    private Product convertToEntity(ProductDto productDto) {
+        return menuMapper.map(productDto, Product.class);
     }
 }

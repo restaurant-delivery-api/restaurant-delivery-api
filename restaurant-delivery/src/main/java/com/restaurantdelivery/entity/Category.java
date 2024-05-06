@@ -23,5 +23,5 @@ public class Category {
 
     @OneToMany
     @JoinColumn(name = "dish_id", nullable = false)
-    private List<Dish> dishes;
+    private List<Product> products;
 }

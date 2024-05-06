@@ -8,8 +8,8 @@ import lombok.*;
 @Data
 
 @Entity
-@Table(name = "dish")
-public class Dish {
+@Table(name = "product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
