@@ -69,11 +69,58 @@ public class MenuService {
         return menuRepository.save(menu);
     }
 
+    public Category addCategoryToMenu(Long menuId, Category category) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        menu.getCategories().add(category);
+        menuRepository.saveAndFlush(menu);
+        return category;
+    }
+
+    public Product addProductToCategoryInMenu(Long menuId, Long categoryId, Product product) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        Category category = getCategoryFromMenuById(menu, categoryId);
+        category.getProducts().add(product);
+        menuRepository.saveAndFlush(menu);
+        return product;
+    }
+
     public Menu updateMenu(Long id, Menu menu) {
         return menuRepository.save(menu);
     }
 
+    public Category updateCategoryInMenu(Long menuId, Long categoryId, Category updCategory) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        Category category = getCategoryFromMenuById(menu, categoryId);
+        menu.getCategories().remove(category);
+        menu.getCategories().add(updCategory);
+        menuRepository.saveAndFlush(menu);
+        return updCategory;
+    }
+
+    public Product updateProductInCategory(Long menuId, Long categoryId, Long productId, Product updProduct) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        Category category = getCategoryFromMenuById(menu, categoryId);
+        Product product = getProductFromCategoryById(category, productId);
+        category.getProducts().remove(product);
+        category.getProducts().add(updProduct);
+        menuRepository.saveAndFlush(menu);
+        return updProduct;
+    }
+
     public void deleteMenuById(Long id) {
         menuRepository.deleteById(id);
+    }
+
+    public void deleteCategoryByIdFromMenu(Long menuId, Long categoryId) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        menu.getCategories().remove(getCategoryFromMenuById(menu, categoryId));
+        menuRepository.saveAndFlush(menu);
+    }
+
+    public void deleteProductByIdFromCategory(Long menuId, Long categoryId, Long productId) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        Category category = getCategoryFromMenuById(menu, categoryId);
+        category.getProducts().remove(getProductFromCategoryById(category, productId));
+        menuRepository.saveAndFlush(menu);
     }
 }

@@ -52,6 +52,22 @@ public class MenuController {
         return convertToDto(menuService.addMenu(convertToEntity(menuDto)));
     }
 
+    @PostMapping("/{menu_id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public CategoryDto addCategoryToMenu(@PathVariable("menu_id") Long menuId, @RequestBody CategoryDto categoryDto) {
+        return convertToDto(menuService.addCategoryToMenu(menuId, convertToEntity(categoryDto)));
+    }
+
+    @PostMapping("/{menu_id}/category/{category_id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public ProductDto addProductToCategory(@PathVariable("menu_id") Long menuId,
+                                           @PathVariable("category_id") Long categoryId,
+                                           @RequestBody ProductDto productDto) {
+        return convertToDto(menuService.addProductToCategoryInMenu(menuId, categoryId, convertToEntity(productDto)));
+    }
+
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -64,10 +80,44 @@ public class MenuController {
         return convertToDto(menuService.updateMenu(id, convertToEntity(menuDto)));
     }
 
+    @PutMapping("/{menu_id}/category/{category_id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public CategoryDto updateCategoryInMenu(@PathVariable("menu_id") Long menuId,
+                                            @PathVariable("category_id") Long categoryId,
+                                            @RequestBody CategoryDto categoryDto) {
+        return convertToDto(menuService.updateCategoryInMenu(menuId, categoryId, convertToEntity(categoryDto)));
+    }
+
+    @PutMapping("/{menu_id}/category/{category_id}/product/{product_id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ProductDto updateProductInCategory(@PathVariable("menu_id") Long menuId,
+                                              @PathVariable("category_id") Long categoryId,
+                                              @PathVariable("product_id") Long productId,
+                                              @RequestBody ProductDto productDto) {
+        return convertToDto(menuService.updateProductInCategory(menuId, categoryId, productId, convertToEntity(productDto)));
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMenu(@PathVariable("id") Long id) {
         menuService.deleteMenuById(id);
+    }
+
+    @DeleteMapping("/{menu_id}/category/{category_id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCategory(@PathVariable("menu_id") Long menuId,
+                               @PathVariable("category_id") Long categoryId) {
+        menuService.deleteCategoryByIdFromMenu(menuId, categoryId);
+    }
+
+    @DeleteMapping("/{menu_id}/category/{category_id}/product/{product_id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable("menu_id") Long menuId,
+                              @PathVariable("category_id") Long categoryId,
+                              @PathVariable("product_id") Long productId) {
+        menuService.deleteProductByIdFromCategory(menuId, categoryId, productId);
     }
 
     private MenuDto convertToDto(Menu menu) {
