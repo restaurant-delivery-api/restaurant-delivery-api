@@ -48,7 +48,7 @@ public class DeliveryPointController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteMenu(@PathVariable("id") Long id) {
+    public void deleteDeliveryPoint(@PathVariable("id") Long id) {
         deliveryPointService.deleteDeliveryPointById(id);
     }
 
