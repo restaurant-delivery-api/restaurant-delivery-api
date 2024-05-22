@@ -39,7 +39,7 @@ public class MenuController {
     }
 
     // get category and its products
-    @GetMapping("/{menu_id}/{category_id}")
+    @GetMapping("/{menu_id}/category/{category_id}")
     @ResponseBody
     public CategoryDto getCategory(@PathVariable("menu_id") Long menuId, @PathVariable("category_id") Long categoryId) {
         return convertToDto(menuService.getCategoryFromMenuByIds(menuId, categoryId));
@@ -50,22 +50,6 @@ public class MenuController {
     @ResponseBody
     public MenuDto addMenu(@RequestBody MenuDto menuDto) {
         return convertToDto(menuService.addMenu(convertToEntity(menuDto)));
-    }
-
-    @PostMapping("/{menu_id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public CategoryDto addCategoryToMenu(@PathVariable("menu_id") Long menuId, @RequestBody CategoryDto categoryDto) {
-        return convertToDto(menuService.addCategoryToMenu(menuId, convertToEntity(categoryDto)));
-    }
-
-    @PostMapping("/{menu_id}/{category_id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public ProductDto addProductToCategory(@PathVariable("menu_id") Long menuId,
-                                           @PathVariable("category_id") Long categoryId,
-                                           @RequestBody ProductDto productDto) {
-        return convertToDto(menuService.addProductToCategory(menuId, categoryId, convertToEntity(productDto)));
     }
 
     @PutMapping("/{id}")

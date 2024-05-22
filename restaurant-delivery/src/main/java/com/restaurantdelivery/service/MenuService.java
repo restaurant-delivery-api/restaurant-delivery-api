@@ -37,12 +37,7 @@ public class MenuService {
         });
     }
 
-    public Menu getMenuById(Long id) {
-        return getMenuByIdOrThrow(id);
-    }
-
-    public Category getCategoryFromMenuByIds(Long menuId, Long categoryId) {
-        Menu menu = getMenuByIdOrThrow(menuId);
+    private Category getCategoryFromMenuById(Menu menu, Long categoryId) {
         List<Category> category = menu.getCategories().stream().filter((cat -> cat.getId().equals(categoryId))).toList();
         if (category.size() > 1) {
             throw new ServerException(HttpStatus.CONFLICT,
@@ -51,29 +46,27 @@ public class MenuService {
         return category.get(0);
     }
 
-    public Menu addMenu(Menu menu) {
-        nonExistOrThrow(menu);
-        return menuRepository.save(menu);
-    }
-
-    public Category addCategoryToMenu(Long menuId, Category category) {
-        Menu menu = getMenuByIdOrThrow(menuId);
-        menu.getCategories().add(category);
-        menuRepository.saveAndFlush(menu);
-        return category;
-    }
-
-    public Product addProductToCategory(Long menuId, Long categoryId, Product product) {
-        Menu menu = getMenuByIdOrThrow(menuId);
-        List<Category> categories = menu.getCategories().stream().filter(cat -> cat.getId().equals(categoryId)).toList();
-        if (categories.size() > 1) {
+    private Product getProductFromCategoryById(Category category, Long productId) {
+        List<Product> product = category.getProducts().stream().filter((prod -> prod.getId().equals(productId))).toList();
+        if (product.size() > 1) {
             throw new ServerException(HttpStatus.CONFLICT,
                     "Got more than one category with the same ids");
         }
-        Category category = categories.get(0);
-        category.getProducts().add(product);
-        menuRepository.saveAndFlush(menu);
-        return product;
+        return product.get(0);
+    }
+
+    public Menu getMenuById(Long id) {
+        return getMenuByIdOrThrow(id);
+    }
+
+    public Category getCategoryFromMenuByIds(Long menuId, Long categoryId) {
+        Menu menu = getMenuByIdOrThrow(menuId);
+        return getCategoryFromMenuById(menu, categoryId);
+    }
+
+    public Menu addMenu(Menu menu) {
+        nonExistOrThrow(menu);
+        return menuRepository.save(menu);
     }
 
     public Menu updateMenu(Long id, Menu menu) {
