@@ -1,7 +1,16 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.3'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
 group = 'com'
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
@@ -15,6 +24,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     implementation 'org.springframework.boot:spring-boot:3.2.3'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.0.8'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
     implementation 'org.springframework.boot:spring-boot-starter:3.2.3'
     implementation 'org.springframework.boot:spring-boot-autoconfigure:3.2.3'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.3'
@@ -23,6 +34,7 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.7.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'io.jsonwebtoken:jjwt:0.12.2'
     implementation 'org.modelmapper:modelmapper:3.2.0'
 }
 

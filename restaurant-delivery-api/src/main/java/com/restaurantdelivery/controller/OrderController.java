@@ -33,8 +33,7 @@ public class OrderController implements OrderApi {
 
 
     public OrderDto updateOrder(Long id, OrderDto orderDto) {
-        if (!Objects.equals(id, orderDto.getId()))
-        {
+        if (!Objects.equals(id, orderDto.getId())) {
             throw new ServerException(HttpStatus.BAD_REQUEST, "IDs don't match");
         }
         return convertToDto(orderService.updateOrder(id, convertToEntity(orderDto)));

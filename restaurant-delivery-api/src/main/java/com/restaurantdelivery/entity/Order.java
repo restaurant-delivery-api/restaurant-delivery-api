@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,9 +35,5 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "delivery_point_id", nullable = false)
     private DeliveryPoint deliveryPoint;
-
-//    @OneToMany
-//    @JoinColumn(name = "product_id", nullable = false)
-//    private List<Product> products;
 
 }
