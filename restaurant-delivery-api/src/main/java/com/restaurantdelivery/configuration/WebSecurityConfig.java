@@ -1,6 +1,7 @@
-package ru.poolnsk.pool.config;
+package com.restaurantdelivery.configuration;
 
 
+import com.restaurantdelivery.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +14,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.poolnsk.pool.service.UserService;
 
 
 @Configuration
@@ -28,17 +27,15 @@ public class WebSecurityConfig {
     private UserService userService;
 
     private final JwtRequestFilter jwtRequestFilter;
+    @Autowired
+    private AppConfiguration passwordEncoder;
 
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder.bCryptPasswordEncoder());
     }
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {  // remove
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -48,7 +45,7 @@ public class WebSecurityConfig {
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder.bCryptPasswordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userService);
         return daoAuthenticationProvider;
     }
@@ -60,7 +57,7 @@ public class WebSecurityConfig {
                 .csrf(csrf->csrf.disable())
                 .cors(cors->cors.disable())
                 .authorizeRequests(requests -> requests
-                        .requestMatchers("").hasRole("ADMIN")
+//                        .requestMatchers("").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

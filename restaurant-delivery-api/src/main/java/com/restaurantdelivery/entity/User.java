@@ -1,9 +1,8 @@
-package ru.poolnsk.pool.entity;
+package com.restaurantdelivery.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,8 +35,6 @@ public class User implements UserDetails {
     @Email
     private String username;
 
-    @Column(nullable = false)
-    private String phoneNumber;
 
     @Size(min=8, message = "Password is too short min 8 chars")
     private String password;

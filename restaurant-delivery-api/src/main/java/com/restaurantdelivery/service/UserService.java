@@ -1,17 +1,16 @@
-package ru.poolnsk.pool.service;
+package com.restaurantdelivery.service;
 
+import com.restaurantdelivery.configuration.AppConfiguration;
+import com.restaurantdelivery.entity.Role;
+import com.restaurantdelivery.entity.User;
+import com.restaurantdelivery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.poolnsk.pool.entity.Role;
-import ru.poolnsk.pool.entity.User;
-import ru.poolnsk.pool.repository.UserRepository;
-
 
 import java.util.Collections;
 import java.util.List;
@@ -21,8 +20,9 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    AppConfiguration bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }
@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
         admin.setUsername("admin@gmail.com");
         admin.setName("admin");
         admin.setSurname("admin");
-        admin.setPassword(bCryptPasswordEncoder.encode("M96oqzl8ID8r"));
+        admin.setPassword(bCryptPasswordEncoder.bCryptPasswordEncoder().encode("M96oqzl8ID8r"));
         admin = userRepository.save(admin);
         return admin;
     }
@@ -70,7 +70,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
         user.setRoles(Collections.singleton(new Role(3L, "ROLE_WORKER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }
@@ -89,7 +89,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void refreshPassword(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.bCryptPasswordEncoder().encode(user.getPassword()));
         userRepository.save(user);
     }
 

@@ -1,5 +1,6 @@
 package com.restaurantdelivery.controller;
 
+import com.restaurantdelivery.api.MenuApi;
 import com.restaurantdelivery.dto.CategoryDto;
 import com.restaurantdelivery.dto.MenuDto;
 import com.restaurantdelivery.dto.ProductDto;
@@ -11,7 +12,7 @@ import com.restaurantdelivery.service.MenuService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Objects;
@@ -19,71 +20,73 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @RestController
-@RequestMapping("/api/v1/menu")
-public class MenuController {
+public class MenuController implements MenuApi {
 
     private MenuService menuService;
     private ModelMapper menuMapper;
 
-    @GetMapping("/all")
-    @ResponseBody
     public List<MenuDto> getMenus() {
         return menuService.getAllMenus().stream().map(this::convertToDto).toList();
     }
 
-    // get menu and all its inners
-    @GetMapping("/{id}")
-    @ResponseBody
-    public MenuDto getMenu(@PathVariable("id") Long id) {
+    public MenuDto getMenu(Long id) {
         return convertToDto(menuService.getMenuById(id));
     }
 
-    // get category and its products
-    @GetMapping("/{menu_id}/{category_id}")
-    @ResponseBody
-    public CategoryDto getCategory(@PathVariable("menu_id") Long menuId, @PathVariable("category_id") Long categoryId) {
+    public CategoryDto getCategory(Long menuId, Long categoryId) {
         return convertToDto(menuService.getCategoryFromMenuByIds(menuId, categoryId));
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public MenuDto addMenu(@RequestBody MenuDto menuDto) {
+    public MenuDto addMenu(MenuDto menuDto) {
         return convertToDto(menuService.addMenu(convertToEntity(menuDto)));
     }
 
-    @PostMapping("/{menu_id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public CategoryDto addCategoryToMenu(@PathVariable("menu_id") Long menuId, @RequestBody CategoryDto categoryDto) {
+    public CategoryDto addCategoryToMenu(Long menuId, CategoryDto categoryDto) {
         return convertToDto(menuService.addCategoryToMenu(menuId, convertToEntity(categoryDto)));
     }
 
-    @PostMapping("/{menu_id}/{category_id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
-    public ProductDto addProductToCategory(@PathVariable("menu_id") Long menuId,
-                                           @PathVariable("category_id") Long categoryId,
-                                           @RequestBody ProductDto productDto) {
-        return convertToDto(menuService.addProductToCategory(menuId, categoryId, convertToEntity(productDto)));
+    public ProductDto addProductToCategory(Long menuId,
+                                           Long categoryId,
+                                           ProductDto productDto) {
+        return convertToDto(menuService.addProductToCategoryInMenu(menuId, categoryId, convertToEntity(productDto)));
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public MenuDto updateMenu(@PathVariable("id") Long id,
-                              @RequestBody MenuDto menuDto) {
-        if (!Objects.equals(id, menuDto.getId()))
-        {
+    public MenuDto updateMenu(Long id,
+                              MenuDto menuDto) {
+        if (!Objects.equals(id, menuDto.getId())) {
             throw new ServerException(HttpStatus.BAD_REQUEST, "IDs don't match");
         }
         return convertToDto(menuService.updateMenu(id, convertToEntity(menuDto)));
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteMenu(@PathVariable("id") Long id) {
+    public CategoryDto updateCategoryInMenu(Long menuId,
+                                            Long categoryId,
+                                            CategoryDto categoryDto) {
+        return convertToDto(menuService.updateCategoryInMenu(menuId, categoryId, convertToEntity(categoryDto)));
+    }
+
+    public ProductDto updateProductInCategory(Long menuId,
+                                              Long categoryId,
+                                              Long productId,
+                                              ProductDto productDto) {
+        return convertToDto(menuService.updateProductInCategory(menuId, categoryId, productId, convertToEntity(productDto)));
+    }
+
+    public void deleteMenu(Long id) {
         menuService.deleteMenuById(id);
+    }
+
+
+    public void deleteCategory(Long menuId,
+                               Long categoryId) {
+        menuService.deleteCategoryByIdFromMenu(menuId, categoryId);
+    }
+
+
+    public void deleteProduct(Long menuId,
+                              Long categoryId,
+                              Long productId) {
+        menuService.deleteProductByIdFromCategory(menuId, categoryId, productId);
     }
 
     private MenuDto convertToDto(Menu menu) {

@@ -1,8 +1,7 @@
-package ru.poolnsk.pool.dto;
+package com.restaurantdelivery.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 

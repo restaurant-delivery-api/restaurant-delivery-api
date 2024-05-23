@@ -7,14 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
 @Entity
-@Table(name = "order")
+@Table(name = "ordr")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +33,7 @@ public class Order {
     private String comment;
 
     @OneToOne
-    @JoinColumn(name = "delivary_point_id", nullable = false)
+    @JoinColumn(name = "delivery_point_id", nullable = false)
     private DeliveryPoint deliveryPoint;
-
-    @OneToMany
-    @JoinColumn(name = "dish_id", nullable = false)
-    private List<Product> products;
 
 }

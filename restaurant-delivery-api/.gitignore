@@ -1,11 +1,30 @@
+<<<<<<< HEAD
 HELP.md
+=======
+>>>>>>> d025adb0d2735f16289cd25e23dff31c6ba9a372
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+<<<<<<< HEAD
 ### STS ###
+=======
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+>>>>>>> d025adb0d2735f16289cd25e23dff31c6ba9a372
 .apt_generated
 .classpath
 .factorypath
@@ -17,6 +36,7 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+<<<<<<< HEAD
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -26,6 +46,8 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+=======
+>>>>>>> d025adb0d2735f16289cd25e23dff31c6ba9a372
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -35,3 +57,9 @@ out/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
+=======
+
+### Mac OS ###
+.DS_Store
+>>>>>>> d025adb0d2735f16289cd25e23dff31c6ba9a372

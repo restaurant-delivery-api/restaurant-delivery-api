@@ -22,6 +22,6 @@ public class Category {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "dish_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private List<Product> products;
 }

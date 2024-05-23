@@ -1,10 +1,9 @@
 package com.restaurantdelivery.repository;
 
-import com.restaurantdelivery.entity.Role;
+import com.restaurantdelivery.entity.DeliveryPoint;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
+public interface DeliveryPointRepository extends JpaRepository<DeliveryPoint, Long> {
 }

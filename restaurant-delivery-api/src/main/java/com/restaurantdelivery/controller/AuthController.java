@@ -1,27 +1,28 @@
-package ru.poolnsk.pool.controller;
+package com.restaurantdelivery.controller;
 
+import com.restaurantdelivery.dto.UserCreateDto;
+import com.restaurantdelivery.dto.WorkerDto;
+import com.restaurantdelivery.dto.security.JwtRequest;
+import com.restaurantdelivery.entity.RefreshToken;
+import com.restaurantdelivery.entity.User;
+import com.restaurantdelivery.response.AppResponse;
+import com.restaurantdelivery.service.RefreshTokenService;
+import com.restaurantdelivery.service.UserService;
+import com.restaurantdelivery.utils.JwtTokenUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
-import ru.poolnsk.pool.dto.JwtRequest;
-import ru.poolnsk.pool.dto.RefreshTokenDto;
-import ru.poolnsk.pool.dto.UserCreateDto;
-import ru.poolnsk.pool.dto.WorkerDto;
-import ru.poolnsk.pool.entity.RefreshToken;
-import ru.poolnsk.pool.entity.User;
-import ru.poolnsk.pool.response.AppResponse;
-import ru.poolnsk.pool.service.RefreshTokenService;
-import ru.poolnsk.pool.service.UserService;
-import ru.poolnsk.pool.utils.JwtTokenUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Duration;
 import java.util.*;
@@ -104,11 +105,10 @@ public class AuthController {
         return ResponseEntity.ok(new AppResponse("Worker list", workerDtoList));
     }
 
-    @PostMapping("logout-user")
+    @PostMapping("refresh-token")
     public ResponseEntity<AppResponse> logoutUser(HttpServletRequest request, HttpServletResponse response) {
         RefreshToken refreshToken = refreshTokenService.getRefreshToken(request);
         refreshTokenService.delete(refreshToken);
-        refreshTokenService.clearCookie(response);
         return ResponseEntity.ok(new AppResponse("User refresh token deleted"));
     }
 
