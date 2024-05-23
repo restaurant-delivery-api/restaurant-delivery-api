@@ -1,0 +1,23 @@
+
+h
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+L
+java:S1874%"1Remove this use of "setClaims"; it is deprecated.(æõíûúÿÿÿÿ
+H
+java:S1874&"2Remove this use of "setSubject"; it is deprecated.(òÃêù
+I
+java:S1874'"3Remove this use of "setIssuedAt"; it is deprecated.( µıó
+P
+java:S1874("5Remove this use of "setExpiration"; it is deprecated.(ËùĞŠşÿÿÿÿ
+K
+java:S1874)"0Remove this use of "signWith"; it is deprecated.(Áå‹İşÿÿÿÿ
+U
+java:S1874)":Remove this use of "SignatureAlgorithm"; it is deprecated.(Áå‹İşÿÿÿÿ
+U
+java:S1874)":Remove this use of "SignatureAlgorithm"; it is deprecated.(Áå‹İşÿÿÿÿ
+P
+java:S18747"5Remove this use of "setSigningKey"; it is deprecated.(úòĞÍüÿÿÿÿ
+K
+java:S18748"6Remove this use of "parseClaimsJws"; it is deprecated.(«ğg
+D
+java:S18748"/Remove this use of "getBody"; it is deprecated.(«ğg

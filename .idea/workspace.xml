@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f23a0d21-e66c-49ca-8990-ada0acc8c73e" name="Changes" comment="SCRUM-2 Доделана и протестирована авторизация">
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery-api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-delivery-api/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery-api/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-delivery-api/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery-api/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-delivery-api/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery-api/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant-delivery-api/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/configuration/JwtRequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/configuration/MvcConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/configuration/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/dto/UserCreateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/repository/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant-delivery/src/main/java/com/restaurantdelivery/service/UserService.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/restaurant-delivery">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/restaurant-delivery-api">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/restaurant-delivery">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/restaurant-delivery-api">
+          <activation />
+        </task>
+        <task path="~/restaurant-delivery-api/restaurant-delivery-api">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar!/lombok/Data.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MigrationScriptOptions">
+    <option name="ignoreImplicitObjects" value="true" />
+    <option name="ignoreSourceCode" value="false" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2gs3Fe8gIkxqRf4KOGTivTI4yQp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.restaurant-delivery/Dockerfile.executor": "Run",
+    "Gradle./home/alina/restaurant-delivery-api/restaurant-delivery/build.gradle [getDeps].executor": "Run",
+    "Gradle.Build restaurant-delivery.executor": "Run",
+    "Gradle.restaurant-delivery [:build].executor": "Run",
+    "Gradle.restaurant-delivery [bootRun].executor": "Run",
+    "Gradle.restaurant-delivery [build].executor": "Run",
+    "Gradle.restaurant-delivery-api [bootRun].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.RestaurantDeliveryApplication.executor": "Run",
+    "git-widget-placeholder": "authorization",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/alina/restaurant-delivery-api/restaurant-delivery-api/src/main/java/com/restaurantdelivery",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/restaurant-delivery-api/src/main/java/com/restaurantdelivery" />
+      <recent name="$PROJECT_DIR$/restaurant-delivery-api/src/main/java/com/restaurantdelivery/dto/security" />
+      <recent name="$PROJECT_DIR$/restaurant-delivery-api/src/main/java/com/restaurantdelivery/api" />
+      <recent name="$PROJECT_DIR$/restaurant-delivery-api" />
+      <recent name="$PROJECT_DIR$/restaurant-delivery" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.restaurantdelivery.repository" />
+      <recent name="com.restaurantdelivery.dto.security" />
+      <recent name="com.restaurantdelivery.service" />
+      <recent name="com.restaurantdelivery.entity" />
+      <recent name="com.restaurantdelivery.dto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.restaurant-delivery-api [bootRun]">
+    <configuration name="/home/alina/restaurant-delivery-api/restaurant-delivery/build.gradle [getDeps]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/restaurant-delivery/build.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="getDeps" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="restaurant-delivery [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="~/restaurant-delivery-api/restaurant-delivery-api" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="restaurant-delivery-api [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/restaurant-delivery-api" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RestaurantDeliveryApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="restaurant-delivery-api.restaurant-delivery-api.main~1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.restaurantdelivery.RestaurantDeliveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RestaurantDeliveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="restaurant-delivery.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.restaurantdelivery.RestaurantDeliveryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="restaurant-delivery/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="restaurant-delivery/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.restaurant-delivery/Dockerfile" />
+      <item itemvalue="Gradle.restaurant-delivery-api [bootRun]" />
+      <item itemvalue="Gradle.restaurant-delivery [build]" />
+      <item itemvalue="Gradle./home/alina/restaurant-delivery-api/restaurant-delivery/build.gradle [getDeps]" />
+      <item itemvalue="Spring Boot.RestaurantDeliveryApplication (1)" />
+      <item itemvalue="Spring Boot.RestaurantDeliveryApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.restaurant-delivery [build]" />
+        <item itemvalue="Gradle./home/alina/restaurant-delivery-api/restaurant-delivery/build.gradle [getDeps]" />
+        <item itemvalue="Docker.restaurant-delivery/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f23a0d21-e66c-49ca-8990-ada0acc8c73e" name="Changes" comment="" />
+      <created>1716472355357</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716472355357</updated>
+      <workItem from="1716472356518" duration="9884000" />
+      <workItem from="1716482362112" duration="6983000" />
+      <workItem from="1716489366209" duration="2311000" />
+    </task>
+    <task id="LOCAL-00001" summary="SCRUM-9 Обновлена структура проекта, добавлены интерфейсы для API. Сокрыты переменные среды в env файлах">
+      <option name="closed" value="true" />
+      <created>1716484117991</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716484117991</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SCRUM-9 Обновлена структура проекта, добавлены интерфейсы для API. Сокрыты переменные среды в env файлах" />
+    <MESSAGE value="SCRUM-2 Доделана и протестирована авторизация" />
+    <option name="LAST_COMMIT_MESSAGE" value="SCRUM-2 Доделана и протестирована авторизация" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>

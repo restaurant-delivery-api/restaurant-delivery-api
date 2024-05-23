@@ -1,0 +1,13 @@
+
+r
+java:S1488"\Immediately return this expression instead of assigning it to the temporary variable "user".(ÍŸôø
+}
+java:S1488$"gImmediately return this expression instead of assigning it to the temporary variable "currentUserName".(×Ô£À
+}
+java:S1488O"bImmediately return this expression instead of assigning it to the temporary variable "workerList".(®‡ÏÃüÿÿÿÿ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8™²¶ú1
+X
+java:S6437="6Revoke and change this password, as it is compromised.(µŠœÊøÿÿÿÿ8ó´¶ú1
