@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  app-database:
+    image: "postgres:16-alpine"
+    container_name: postgres-app
+    restart: always
+    env_file:
+      - postgres.env
+    ports:
+      - "5433:5433"
+
+  sonar-database:
+    image: "postgres:16-alpine"
+    container_name: postgres-sonar
+    restart: always
+    env_file:
+      - sonar.env
+    ports:
+      - "5434:5434"
+
+  sonarqube:
+    image: "sonarqube:community"
+    container_name: sonarqube
+    restart: always
+    env_file:
+      - postgres.env
+
+    ports:
+      - "9000:9000"
+    depends_on:
+      - sonar-database
+
+  app:
+    container_name: restaurant-delivery
+    restart: always
+
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    env_file:
+      - server.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - app-database
