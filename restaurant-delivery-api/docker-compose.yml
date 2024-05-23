@@ -6,15 +6,8 @@ services:
     image: "postgres:16-alpine"
     container_name: postgres-app
     restart: always
-
-    environment:
-      # новопточники сказали как-то по другому передавать пароль
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: restaurant-delivery
-      PGDATA: /var/lib/postgresql/data/pgdata/app
-      PGPORT: 5433
-
+    env_file:
+      - postgres.env
     ports:
       - "5433:5433"
 
@@ -22,14 +15,8 @@ services:
     image: "postgres:16-alpine"
     container_name: postgres-sonar
     restart: always
-
-    environment:
-      POSTGRES_USER: sonar
-      POSTGRES_PASSWORD: sonar
-      POSTGRES_DB: sonar
-      PGDATA: /var/lib/postgresql/data/pgdata/sonar
-      PGPORT: 5434
-
+    env_file:
+      - sonar.env
     ports:
       - "5434:5434"
 
@@ -37,11 +24,8 @@ services:
     image: "sonarqube:community"
     container_name: sonarqube
     restart: always
-
-    environment:
-      SONAR_JDBC_URL: jdbc:postgresql://sonar-database:5434/sonar
-      SONAR_JDBC_USERNAME: sonar
-      SONAR_JDBC_PASSWORD: sonar
+    env_file:
+      - postgres.env
 
     ports:
       - "9000:9000"
@@ -56,9 +40,8 @@ services:
       context: ./
       dockerfile: Dockerfile
 
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://app-database:5433/restaurant-delivery
-
+    env_file:
+      - server.env
     ports:
       - "8080:8080"
     depends_on:
