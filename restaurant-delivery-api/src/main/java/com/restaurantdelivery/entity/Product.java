@@ -1,23 +1,51 @@
 package com.restaurantdelivery.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+import java.util.ArrayList;
+import java.util.List;
 
+@Table(name = "products")
+@Getter
+@Setter
 @Entity
-@Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    private String description;
+    private Integer price;
+
+    private Integer oldPrice;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Category category;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<FilledProperty> filledProperties;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<ExtraProperty> extraPropertyList;
+
+    @Transient
+    private Long categoryId;
+
+    @Column(length = 500)
+    private String info;
+
+    private List<String> photoList;
+
+    public Product() {
+        this.filledProperties = new ArrayList<>();
+    }
+
+    public void addFilledProperty(FilledProperty filledProperty) {
+        filledProperties.add(filledProperty);
+    }
+
+    public void addExtraProperty(ExtraProperty extraProperty) {extraPropertyList.add(extraProperty); }
 }

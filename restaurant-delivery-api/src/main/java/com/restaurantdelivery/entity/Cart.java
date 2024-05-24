@@ -1,22 +1,36 @@
 package com.restaurantdelivery.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-
+@Getter
+@Setter
 @Entity
 @Table(name = "cart")
 public class Cart {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Column(nullable = false)
-    private Long sessionId;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Product> products;
 
+    private String sessionId;
+
+    public Cart() {
+        this.products = new ArrayList<Product>();
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void deleteProduct(Product product) {
+        products.remove(product);
+    }
 }
