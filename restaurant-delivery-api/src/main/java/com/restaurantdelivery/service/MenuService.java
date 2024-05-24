@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -88,24 +89,34 @@ public class MenuService {
         return menuRepository.save(menu);
     }
 
+
     public Category updateCategoryInMenu(Long menuId, Long categoryId, Category updCategory) {
         Menu menu = getMenuByIdOrThrow(menuId);
-        Category category = getCategoryFromMenuById(menu, categoryId);
-        menu.getCategories().remove(category);
-        menu.getCategories().add(updCategory);
-        menuRepository.saveAndFlush(menu);
+        List<Category> categories = new ArrayList<>(menu.getCategories()); // Create a modifiable list
+
+        categories.removeIf(cat -> cat.getId().equals(categoryId)); // Remove the old category
+        categories.add(updCategory); // Add the updated category
+
+        menu.setCategories(categories); // Update the categories in the menu
+        menuRepository.saveAndFlush(menu); // Save the changes
+
         return updCategory;
     }
 
     public Product updateProductInCategory(Long menuId, Long categoryId, Long productId, Product updProduct) {
         Menu menu = getMenuByIdOrThrow(menuId);
         Category category = getCategoryFromMenuById(menu, categoryId);
-        Product product = getProductFromCategoryById(category, productId);
-        category.getProducts().remove(product);
-        category.getProducts().add(updProduct);
+
+        List<Product> products = new ArrayList<>(category.getProducts());
+
+        products.removeIf(prod -> prod.getId().equals(productId));
+        products.add(updProduct);
+        category.setProducts(products);
+
         menuRepository.saveAndFlush(menu);
         return updProduct;
     }
+
 
     public void deleteMenuById(Long id) {
         menuRepository.deleteById(id);
@@ -113,14 +124,19 @@ public class MenuService {
 
     public void deleteCategoryByIdFromMenu(Long menuId, Long categoryId) {
         Menu menu = getMenuByIdOrThrow(menuId);
-        menu.getCategories().remove(getCategoryFromMenuById(menu, categoryId));
+        List<Category> categories = new ArrayList<>(menu.getCategories()); // Create a modifiable list
+        categories.removeIf(category -> category.getId().equals(categoryId)); // Remove the category
+        menu.setCategories(categories);
         menuRepository.saveAndFlush(menu);
     }
+
 
     public void deleteProductByIdFromCategory(Long menuId, Long categoryId, Long productId) {
         Menu menu = getMenuByIdOrThrow(menuId);
         Category category = getCategoryFromMenuById(menu, categoryId);
-        category.getProducts().remove(getProductFromCategoryById(category, productId));
+        List<Product> products = new ArrayList<>(category.getProducts()); // Create a modifiable list
+        products.removeIf(product -> product.getId().equals(productId)); // Remove the product
+        category.setProducts(products);
         menuRepository.saveAndFlush(menu);
     }
 }
