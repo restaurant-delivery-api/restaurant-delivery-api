@@ -28,3 +28,7 @@ jobs:
             ./gradlew clean build -x test
             docker-compose build
             docker-compose up -d
+
+            cd front
+            nmp run dev
+    
