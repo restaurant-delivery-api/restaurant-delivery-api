@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-@Table(name = "feedback")
+@Table(name = "feeedback")
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
