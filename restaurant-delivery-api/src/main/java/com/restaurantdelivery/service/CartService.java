@@ -1,12 +1,12 @@
-package ru.poolnsk.pool.service;
+package com.restaurantdelivery.service;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.poolnsk.pool.entity.Cart;
-import ru.poolnsk.pool.repository.CartRepository;
+import com.restaurantdelivery.entity.Cart;
+import com.restaurantdelivery.repository.CartRepository;
 
 import java.util.UUID;
 

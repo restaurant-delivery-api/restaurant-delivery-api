@@ -1,6 +1,6 @@
 package com.restaurantdelivery.controller;
 
-import jakarta.servlet.http.Cookie;
+import com.restaurantdelivery.api.CartApi;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -8,16 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import com.restaurantdelivery.dto.CatalogDto;
 import com.restaurantdelivery.entity.Cart;
-import com.restaurantdelivery.entity.Category;
 import com.restaurantdelivery.entity.Product;
-import com.restaurantdelivery.entity.Section;
-import com.restaurantdelivery.repository.CartRepository;
 import com.restaurantdelivery.service.CartService;
 import com.restaurantdelivery.service.ProductService;
 import com.restaurantdelivery.service.SectionService;
-import com.restaurantdelivery.service.UserService;
 import com.restaurantdelivery.utils.Catalog;
 
 import java.util.*;
@@ -25,7 +20,7 @@ import java.util.*;
 @Controller
 @ResponseStatus(HttpStatus.OK)
 @RequiredArgsConstructor
-public class CartController implements CartApi{
+public class CartController implements CartApi {
     private final ProductService productService;
     private final CartService cartService;
     private final SectionService sectionService;
