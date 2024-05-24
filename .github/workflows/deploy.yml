@@ -18,17 +18,13 @@ jobs:
         with:
           host: ${{ secrets.HOST_SERVER }}
           username: ${{ secrets.HOST_USERNAME }}
-          password: ${{ secrets.HOST_PASSWORD }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            eval $(ssh-agent -s)
-            ssh-add /root/.ssh/github
-            git pull
             cd restaurant-delivery-api/restaurant-delivery-api/
+            git pull
             ./gradlew clean build -x test
             docker-compose build
             docker-compose up -d
 
             cd front
-            nmp run dev
-    
+            npm run dev
