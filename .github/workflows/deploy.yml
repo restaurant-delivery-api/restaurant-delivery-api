@@ -23,8 +23,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y docker-compose npm git
 
+            cd ~
+
             if [ ! -d "restaurant-delivery-api" ]; then
-              git clone https://github.com/your-username/restaurant-delivery-api.git
+              git clone https://github.com/restaurant-delivery-api/restaurant-delivery-api.git
             fi
 
             cd restaurant-delivery-api/restaurant-delivery-api/
@@ -35,7 +37,3 @@ jobs:
 
             docker-compose build
             docker-compose up -d
-
-            cd front
-            npm install
-            npm run dev
