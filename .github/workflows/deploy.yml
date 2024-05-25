@@ -20,11 +20,22 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose npm git
+
+            if [ ! -d "restaurant-delivery-api" ]; then
+              git clone https://github.com/your-username/restaurant-delivery-api.git
+            fi
+
             cd restaurant-delivery-api/restaurant-delivery-api/
+
             git pull
+
             ./gradlew clean build -x test
+
             docker-compose build
             docker-compose up -d
 
             cd front
+            npm install
             npm run dev
